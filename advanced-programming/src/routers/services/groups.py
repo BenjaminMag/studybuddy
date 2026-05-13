@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..database import get_db
-from ..logic import Group, User, GroupCreate, GroupUpdate
+from ..uploads.database import get_db
+from ..uploads.logic import Group, User, GroupCreate, GroupUpdate
 
 router = APIRouter(prefix="/groups", tags=["Groups"])
 
@@ -71,6 +71,9 @@ def add_user_to_group(group_id: int, user_id: int, db: Session = Depends(get_db)
 
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
+
+    if user in group.members:
+        return {"message": "User already in group"}
 
     group.members.append(user)
     db.commit()

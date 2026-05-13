@@ -10,8 +10,8 @@ from .database import Base
 group_members = Table(
     "group_members",
     Base.metadata,
-    Column("group_id", Integer, ForeignKey("groups.id")),
-    Column("user_id", Integer, ForeignKey("users.id"))
+    Column("group_id", Integer, ForeignKey("groups.id"), primary_key=True),
+    Column("user_id", Integer, ForeignKey("users.id"), primary_key=True)
 )
 
 # SQLAlchemy Models
@@ -25,13 +25,17 @@ class User(Base):
     degree = Column(String, nullable=True)
     studycourse = Column(String, nullable=True)
     interests = Column(String, nullable=True)
-    groups = relationship("Group", secondary=group_members, black_populates="members")
+    groups = relationship("Group", secondary=group_members, back_populates="members")
+
+
 class Group(Base):
     __tablename__ = "groups"
-    id = Column(String, unique=True)
+    id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True)
     description = Column(String)
-    members = relationship("User", secondary=group_members, black_populates="groups")
+    members = relationship("User", secondary=group_members, back_populates="groups")
+
+
 class File(Base):
     __tablename__ = "files"
     id = Column(Integer, primary_key=True)
@@ -58,6 +62,8 @@ class UserCreate(BaseModel):
     degree: Optional[str] = None
     studycourse: Optional[str] = None
     interests: Optional[str] = None
+
+
 class UserOut(BaseModel):
     id: int
     email: str
@@ -65,7 +71,8 @@ class UserOut(BaseModel):
     class Config:
         from_attributes = True
 
-class Groupcreate(BaseModel):
+
+class GroupCreate(BaseModel):
     name: str
     description: Optional[str] = None
 class GroupOut(BaseModel):

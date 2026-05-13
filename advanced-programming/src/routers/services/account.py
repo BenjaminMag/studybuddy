@@ -2,8 +2,7 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from pydantic import EmailStr
-from ..logic import User, UserCreate, UserOut
-from ..database import Base
+from ..uploads.logic import User, UserCreate, UserOut
 
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
