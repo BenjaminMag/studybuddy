@@ -1,3 +1,4 @@
+"""
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
@@ -65,3 +66,4 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Task deleted"}
+    """

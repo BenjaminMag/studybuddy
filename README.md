@@ -9,14 +9,13 @@ A comprehensive Python project demonstrating advanced programming concepts and b
 - Groupchat, Chat (create, add, delete, rename, edit)
 - Tasks (create, add, delete, rename, edit)
 - User registration (only Students) / login
-- Profile (University (Uni BS-FH), Degree, Studycourse, Interests) drop-down list
+- Profile (University (FH), Degree, Studycourse, Interests) drop-down list
 - Public folder, access for all users
 - Search function for all categories
 
 
 ## Would / Should / Will
 - Calls
-- 
 
 ## Requirements
 - Python 3.8+
@@ -63,7 +62,7 @@ pytest tests/
 ```
 
 ## Documentation
-See [docs/](docs/) for detailed documentation.
+
 
 ## Contributing
 1. Fork the repository

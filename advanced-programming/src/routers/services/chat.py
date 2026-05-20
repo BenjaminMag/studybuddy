@@ -1,3 +1,4 @@
+"""
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
@@ -55,3 +56,4 @@ def delete_message(message_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Message deleted"}
+"""

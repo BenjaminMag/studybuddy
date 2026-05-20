@@ -1,3 +1,4 @@
+"""
 from fastapi import APIRouter, Depends, UploadFile, File
 from sqlalchemy.orm import Session
 from database import get_db
@@ -14,3 +15,4 @@ async def upload_file(file: UploadFile = File(...), db: Session = Depends(get_db
 async def list_files(db: Session = Depends(get_db)):
     # Hier listen wir später alle Dateien auf
     return {"files": []}
+"""
